@@ -37,14 +37,17 @@ exports.Quiz = Quiz; //exportar definición de tabla Quiz
 
 //creamos e inicializamos la tabla de preguntas en DB
 sequelize.sync().success(function(){
-	//succes(..) ejecuta el manejador una vez creada la tabla
-	Quiz.count().success(function(count){
+	//succes(..) antes ahora then(..) ejecuta el manejador una vez creada 		//la tabla
+	Quiz.count().then(function(count){
 		if(count===0){ //La tabla se inicializa solo si está vacía
 			Quiz.create({pregunta: 'Capital de Italia',
 				respuesta: 'Roma'
+			});
+			Quiz.create({pregunta: 'Capital de Portugal',
+				respuesta: 'Lisboa'
 			})
 			.success(function(){console.log('DB Inicializada');
-					console.log('servidor iniciado en el puerto 5000');});
+					console.log('Servidor iniciado en el puerto 5000');});
 		};	
 	});
 });
