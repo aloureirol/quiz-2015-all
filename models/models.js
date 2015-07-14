@@ -14,7 +14,7 @@ var protocol	= (url[1]||null);
 var dialect	= (url[1]||null);
 var port	= (url[5]||null);
 var host	= (url[4]||null);
-var storage	= process.env.DATABASED_STORAGE;
+var storage	= process.env.DATABASE_STORAGE;
 
 //Cargar modelo ORM
 var Sequelize = require('sequelize');
@@ -36,7 +36,7 @@ var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 exports.Quiz = Quiz; //exportar definición de tabla Quiz
 
 //creamos e inicializamos la tabla de preguntas en DB
-sequelize.sync().success(function(){
+sequelize.sync().then(function(){
 	//succes(..) antes ahora then(..) ejecuta el manejador una vez creada 		//la tabla
 	Quiz.count().then(function(count){
 		if(count===0){ //La tabla se inicializa solo si está vacía

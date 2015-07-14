@@ -34,9 +34,16 @@ exports.answer = function(req, res){
 
 //GET /quizes
 exports.index=function(req,res){
-	models.Quiz.findAll().then(function(quizes){
+	if(req.query.search !== undefined){		//Comprobamos si es la carga incial o 
+																				//o una busqueda
+		models.Quiz.findAll({where:["pregunta like ?",'%'+req.query.search.replace(" ","%")+'%']}).then(function(quizes){
 		res.render('quizes/index',{quizes: quizes});
-})
+	})
+}else{
+		models.Quiz.findAll().then(function(quizes){
+		res.render('quizes/index',{quizes: quizes});
+	})
+}
 };
 
 //GET /quizes/:id
