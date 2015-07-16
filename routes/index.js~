@@ -23,7 +23,7 @@ router.get('/quizes/answer',quizController.answer);
 
 /*GET authos page.*/
 router.get('/author', function(req,res){
-	res.render('author',{title: 'Armando Loureiro López',foto1:'/images/foto.jpg'});
+	res.render('author',{title: 'Armando Loureiro López',foto1:'/images/foto.jpg', errors: []});
 });
 
 module.exports = router;
