@@ -41,10 +41,12 @@ sequelize.sync().then(function(){
 	Quiz.count().then(function(count){
 		if(count===0){ //La tabla se inicializa solo si está vacía
 			Quiz.create({pregunta: 'Capital de Italia',
-				respuesta: 'Roma'
+				respuesta: 'Roma',
+				tematica: 'Humanidades'
 			});
 			Quiz.create({pregunta: 'Capital de Portugal',
-				respuesta: 'Lisboa'
+				respuesta: 'Lisboa',
+				tematica: 'Humanidades'
 			})
 			.success(function(){console.log('DB Inicializada');
 					console.log('Servidor iniciado en el puerto 5000');});
