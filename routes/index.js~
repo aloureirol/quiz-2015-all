@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 //Autoload de comandos con :quizId
 router.param('quizId', quizController.load);
 
-//Definición de rutas de sesion
+//Definición de rutas de sesión
 router.get('/login',		sessionController.new);		//formulario login
 router.post('/login',		sessionController.create);//crear sesión
 router.get('/logout',		sessionController.destroy);//destruir sesión
