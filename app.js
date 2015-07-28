@@ -35,12 +35,36 @@ app.use(function(req, res, next){
 	if(!req.path.match(/\/login|\/logout/)){
 		req.session.redir = req.path;
 	}
+//Renovamos el tiempo en que expira la cookie cada vez que accedemos a
+//alguna página, si durante dos mín no clickas en nada se cierra la sesión
+//Jugando con la caducidad de las cookies funciona correctamente
 
-	//hacer visible req.session en las vistar
+	//req.session.cookie.expires = new Date(Date.now()+120000);
+
+//hacer visible req.session en las vistar
 	res.locals.session = req.session;
 	next();
 });
 
+//auto-logout a los 2 minutos
+app.use(function(req, res, next){
+		if(req.session.user){
+		if(!req.session.last){
+			req.session.last = Date.now();
+		}else{
+			if(req.session.now){
+				req.session.last = req.session.now;
+			}
+		}
+	req.session.now = Date.now();
+	if(req.session.now > req.session.last + 120000){
+		req.session.last = null;
+		req.session.now = null;
+		delete req.session.user;
+	}
+	}
+	next();
+});
 app.use('/', routes);
 
 // catch 404 and forward to error handler
