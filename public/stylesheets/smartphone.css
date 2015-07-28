@@ -6,3 +6,8 @@ h2 span, section #id1, #rem {display: none;}
 body		{font-size: xx-large;}
 .movil		{font-size: large;}
 footer, input	{font-size: large;}
+#stat	{	width:100%;
+				text-align: left;
+				border: 1px solid black;
+				background-color: #f1f1c1;
+}

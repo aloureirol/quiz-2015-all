@@ -130,12 +130,10 @@ exports.destroy = function(req,res) {
 
 //Estadísticas
 exports.statistics = function(req, res){
-	models.Quiz.findAll({include: [{model: models.Comment}]})
-	.then(function(result){
+	models.Quiz.findAll({include: [{model: models.Comment}]}).then(function(result){
 	/*en result tenemos preguntas y sus comentarios, para acceder a los 
-	comentarios ej: result[0].Comment.length - comentarios de la 1ª preg.*/
-	var np = result.Comment.length;
-	res.render('quizes/statistics', {resultado: np, errors: []});
+	comentarios ej: result[0].Comments.length - comentarios de la 1ª preg.*/	
+	res.render('quizes/statistics', {resultado: result, errors: []});
 	});
 
 };

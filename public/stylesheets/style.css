@@ -13,3 +13,11 @@ nav span		{margin: 0px 10px 0px 0px;}
 em		{float: left; width: 150px;font:14px Georgia, serif;}
 
 .right	{float: right;}
+
+#stat td	{	
+				text-align: left;
+				border: 1px solid black;
+				background-color: #f1f1c1;
+				height: 30px;
+				padding: 0px 5px 0px 20px;
+}

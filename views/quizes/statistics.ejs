@@ -1,0 +1,29 @@
+<p>
+<table id="stat">
+	<tr>
+		<td>Número de preguntas:&nbsp;		</td>
+		<td><%= resultado.length %></td>
+	</tr>
+	<tr>
+		<td>Número de comentarios:&nbsp;	</td>
+		<%var tc =0, ps=0, pc=0;for (var i=0;i<resultado.length;i++){%>
+		<%tc = tc + resultado[i].Comments.length;%>
+		<%if(resultado[i].Comments.length === 0) ps++;%>	
+		<%if(resultado[i].Comments.length !== 0) pc++;%>	
+		<%}%>
+		<td><%= tc %></td>
+	</tr>
+	<tr>
+		<td>Media de comentarios:&nbsp;		</td>
+		<td><%= (tc/resultado.length).toFixed(2) %></td><br>
+	</tr>
+	<tr>
+		<td>Preguntas sin comentario:&nbsp;	</td>
+		<td><%= ps %></td>
+	</tr>
+	<tr>
+		<td>Preguntas con comentario:&nbsp;</td>
+		<td><%= pc %></td>
+	</tr>
+</table>
+</p>
