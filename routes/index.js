@@ -41,4 +41,7 @@ router.get('/author', function(req,res){
 	res.render('author',{title: 'Armando Loureiro López',foto1:'/images/foto.jpg', errors: []});
 });
 
+//Definición de ruta de estadísticas
+router.get('/quizes/statistics',sessionController.loginRequired,	quizController.statistics);
+
 module.exports = router;
